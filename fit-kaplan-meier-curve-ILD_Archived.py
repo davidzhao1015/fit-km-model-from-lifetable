@@ -4,7 +4,7 @@
 
 
 # -- - Imports --- #
-from turtle import color # fit Kaplan-Meier curve for ILD data
+# from turtle import color # fit Kaplan-Meier curve for ILD data
 import lifelines
 import pandas as pd
 import seaborn as sns
