@@ -1,11 +1,17 @@
-from turtle import color
+#================================================================#
+# Fit Kaplan-Meier Curve from published lifetable of ILD data    #
+#================================================================#
+
+
+# -- - Imports --- #
+from turtle import color # fit Kaplan-Meier curve for ILD data
 import lifelines
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Raw table
+# --- Raw table ---#
 pm_year = [745, 592, 382, 262, 171, 97]
 
 data = {
@@ -14,12 +20,14 @@ data = {
 }
 df = pd.DataFrame(data)
 
-# Compute events per interval
+
+# --- Compute events per interval --- #
 df["events"] = df["survivors"].shift(1) - df["survivors"]
 df.loc[0, "events"] = 0  # no event at time 0
 print(df)
 
-# Create expanded individual-level dataset for lifelines
+
+# --- Create expanded individual-level dataset for lifelines --- #
 records = []
 for _, row in df.iterrows():
     year = row["year"]
@@ -36,7 +44,8 @@ for i in range(int(df.iloc[-1]["survivors"])):
 df_long = pd.DataFrame(records)
 print(df_long.head())
 
-# Fit Kaplan-Meier
+
+# --- Fit Kaplan-Meier --- #
 from lifelines import KaplanMeierFitter
 
 km = KaplanMeierFitter()
@@ -47,7 +56,8 @@ print(km.survival_function_)
 
 print("Median Survival Time:", km.median_survival_time_)
 
-# Plot
+
+# --- Plot --- #
 km.plot_survival_function()
 plt.title("Kaplan-Meier Survival Curve")
 plt.xlabel("Time (years)")
