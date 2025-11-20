@@ -4,4 +4,4 @@ To support this, I am converting the existing code into a reusable and well-docu
 
 I may extend the notebook further by estimating the mean time-to-event (or RMST) from the fitted Kaplan–Meier model.
 
-In parallel, I plan to write a blog article that explains the *why* and *what* behind the notebook—highlighting the key assumptions required to reconstruct a Kaplan–Meier curve and model from life-table data.
+In parallel, I plan to write a blog article that explains the why and what behind the notebook—highlighting the key assumptions required to reconstruct a Kaplan–Meier curve and model from life-table data.
